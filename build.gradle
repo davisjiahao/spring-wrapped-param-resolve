@@ -1,26 +1,34 @@
-apply plugin: 'java'
-apply plugin: 'maven'
-
-group = 'com.example'
+group = 'com.davis'
 version = '0.0.1-SNAPSHOT'
 
 description = """manhattan-request-param"""
 
-sourceCompatibility = 1.5
-targetCompatibility = 1.5
-tasks.withType(JavaCompile) {
-	options.encoding = 'UTF-8'
+buildscript {
+    ext {
+        springBootVersion = '1.5.9.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
+apply from: 'libraries.gradle'
 
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'org.springframework.boot'
 
-repositories {
-    maven { url 'http://artifactory.intra.xiaojukeji.com:80/artifactory/libs-release' }
-    maven { url 'http://artifactory.intra.xiaojukeji.com:80/artifactory/libs-snapshot' }
-    mavenLocal()
-    mavenCentral()
-}
-dependencies {
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'2.0.1.RELEASE'
-    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'2.0.1.RELEASE'
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        compileOnly libraries.lombok
+        compile("org.springframework.boot:spring-boot-starter-web")
+        testCompile("org.springframework.boot:spring-boot-starter-test")
+    }
 }

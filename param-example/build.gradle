@@ -1,0 +1,15 @@
+group 'com.example'
+version '0.0.1-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':request-param-core')
+    compile libraries.commonslang3
+    compile libraries.fastjson
+}

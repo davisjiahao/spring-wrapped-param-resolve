@@ -1,1 +1,4 @@
 rootProject.name = 'manhattan-request-param'
+include 'param-example'
+include 'request-param-core'
+

@@ -1,0 +1,19 @@
+ext {
+    versions = [
+            junit               : '4.12',
+    ]
+
+    libraries = [
+
+            /** Junit **/
+            junit                 : "junit:junit:${versions.junit}",
+
+            /** fastjson **/
+            fastjson              : 'com.alibaba:fastjson:1.2.60',
+
+            lombok                : 'org.projectlombok:lombok:1.16.10',
+
+            commonslang3         : 'org.apache.commons:commons-lang3:3.0.1',
+
+    ]
+}
